@@ -5,6 +5,9 @@ import Feed from "../Components/Feed"
 import Navigation from "../Components/Navigation"
 import { getNewestPost, getPostById, getTrendingPost } from "../Services/postApi"
 import PostCard from "../Components/PostCard"
+import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+
 
 
 export default function FeedPage({user}) {
@@ -35,6 +38,9 @@ export default function FeedPage({user}) {
 
     const post = getPostById(postId)
 
+    const navigate = useNavigate()
+    // hook pour gérer la navigation
+
     let postEl
     if(post) {
        postEl = (<div>
@@ -45,9 +51,30 @@ export default function FeedPage({user}) {
 
     return (
         <div>
+            {user ? <div>Bonjour {user.pseudo}</div> : <Link to="/login" >Connexion</Link>}
+            
+            {/* MA Version !!!!!!!!! */}
             {/* {user ? (<div>Bonjour {user.nom}!</div>) : undefined} */}
-            {user && (<div>Bonjour {user.nom}!</div>)}
+            {/* {user && (<div>Bonjour {user.nom}!</div>)} */}
             {/* user est récupéré via le Props dans la fct FeedPage */}
+
+            <div>
+                <br/>
+                {/* <button onClick={<Link to="/login" ></Link>}>Changer de user </button> */}
+                <button onClick={()=>{navigate('/login')}}>Changer de user </button>
+                <br/>
+            </div>
+
+            <div>
+                <br/>
+                <button onClick={()=>navigate('/logout')}>Se déconnecter </button>
+                {console.log(user)}
+                <br/>
+                <br/>
+            </div>
+
+
+
             <div>
                 {postEl}
                 {/* <PostCard id={postMessage.id} */}
