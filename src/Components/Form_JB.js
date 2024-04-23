@@ -28,8 +28,8 @@ export default function Form({ onMemberConnect }) { // le Props - déclaration d
         // const id = new Date().getTime();
         const id = name.length + 1;
         const nom = newName;
-        nameCopy.push({ id: id, nom: nom }) // stocke chaque nouveau memebre dans le tableau [name]
-        onMemberConnect({ id: id, nom: nom }); // permet le renvoi du memebre connecté au parent
+        nameCopy.push({ id: id, nom: nom }) // stocke chaque nouveau membre dans le tableau [name]
+        onMemberConnect({ id: id, nom: nom }); // permet le renvoi du membre connecté au parent
         navigate('/')  // retour à la page d'accueil
 
         // 3. modif du state
